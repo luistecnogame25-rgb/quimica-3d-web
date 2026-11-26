@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Química 3D — Laboratorio de química en tu teléfono</title>
+  <meta name="description" content="Química 3D es una app Android para explorar los 118 elementos, átomos y moléculas en 3D con datos científicos verificables. Apoya su lanzamiento en Google Play." />
+  <meta name="theme-color" content="#07080c" />
+  <meta property="og:title" content="Química 3D — Laboratorio de química en tu teléfono" />
+  <meta property="og:description" content="Explora los 118 elementos, átomos y moléculas en 3D con datos verificables. Ayúdanos a llegar a Google Play." />
+  <meta property="og:image" content="assets/og.png" />
+  <link rel="icon" href="assets/icono.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- ============================== Navegación ============================== -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#inicio" aria-label="Química 3D, inicio">
+      <img src="assets/icono.svg" alt="" width="34" height="34" />
+      <span>Química 3D</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#app">La app</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#ciencia">Ciencia real</a>
+      <a href="#donar">Apoyar</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#donar">Donar</a>
+  </header>
+
+  <main>
+    <!-- ============================== Portada ============================== -->
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <span class="eyebrow"><span class="dot"></span> App Android · en desarrollo</span>
+        <h1>La química,<br /><span class="grad">en tus manos.</span><br />En 3D.</h1>
+        <p class="lead">
+          Química 3D es un laboratorio de bolsillo: explora los 118 elementos, mira por dentro cada átomo,
+          forma moléculas documentadas y calcula como un químico. Todo con datos científicos verificables.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#donar">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+            Apoya el lanzamiento
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#app">Ver cómo es la app</a>
+        </div>
+        <ul class="hero-facts">
+          <li><b>118</b><span>elementos con datos de PubChem</span></li>
+          <li><b>3D</b><span>átomos, orbitales y moléculas</span></li>
+          <li><b>Offline</b><span>funciona sin conexión</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mol-card glass">
+          <div class="mol-head">
+            <div>
+              <span class="mol-kicker">Prueba una parte de la app</span>
+              <h3 id="molName">Agua</h3>
+              <span class="mol-formula" id="molFormula">H₂O</span>
+            </div>
+            <span class="pill" id="molBonding">Covalente polar</span>
+          </div>
+          <div class="mol-stage" id="molStage">
+            <canvas id="molCanvas" aria-label="Molécula en 3D que puedes girar"></canvas>
+            <span class="mol-hint">Arrastra para girar</span>
+          </div>
+          <div class="mol-chips" id="molChips" role="tablist" aria-label="Elige una molécula"></div>
+          <p class="mol-source">Geometría: conformero 3D de PubChem (calculado, MMFF94s). Los mismos datos que usa la app.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Qué es ============================== -->
+    <section class="section" id="app">
+      <div class="section-head reveal">
+        <span class="eyebrow">¿Qué es Química 3D?</span>
+        <h2>Un laboratorio de química<br />que cabe en tu bolsillo.</h2>
+        <p>
+          Pensada para estudiantes, docentes y curiosos. En lugar de memorizar una tabla plana,
+          tocas un elemento y ves su átomo girar frente a ti; acercas dos átomos y la app te dice,
+          con fuentes, si forman un compuesto real y qué tipo de enlace los une.
+        </p>
+      </div>
+
+      <!-- Escaparate de capturas reales -->
+      <div class="showcase reveal">
+        <div class="show-tabs" role="tablist" aria-label="Pantallas de la app">
+          <button class="show-tab active" data-shot="0" role="tab" aria-selected="true">
+            <b>Tabla periódica</b><span>Los 118 elementos, con búsqueda y filtros por familia.</span>
+          </button>
+          <button class="show-tab" data-shot="1" role="tab" aria-selected="false">
+            <b>Átomo en 3D</b><span>Modelo de Bohr, configuración electrónica, orbitales y núcleo.</span>
+          </button>
+          <button class="show-tab" data-shot="2" role="tab" aria-selected="false">
+            <b>Laboratorio 3D</b><span>Lleva elementos y sustancias a la mesa de trabajo y analízalos.</span>
+          </button>
+          <button class="show-tab" data-shot="3" role="tab" aria-selected="false">
+            <b>Panel de sustancias</b><span>Tipo de enlace, polaridad, geometría y fuerzas intermoleculares.</span>
+          </button>
+          <button class="show-tab" data-shot="4" role="tab" aria-selected="false">
+            <b>Calculadora química</b><span>Masa molar, composición, ecuaciones, disoluciones y más.</span>
+          </button>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen nobar" id="phoneScreen">
+              <img class="shot nobar active" src="assets/capturas/m-tabla.png" alt="Tabla periódica de Química 3D en un teléfono" />
+              <img class="shot nobar" src="assets/capturas/m-bohr.png" alt="Átomo de oxígeno en 3D con el modelo de Bohr" loading="lazy" />
+              <img class="shot" src="assets/capturas/a-lab-escena.png" alt="Laboratorio 3D con moléculas de agua y dióxido de carbono" loading="lazy" />
+              <img class="shot" src="assets/capturas/a-panel-sustancias-agua.png" alt="Panel de sustancias describiendo el enlace O–H del agua" loading="lazy" />
+              <img class="shot" src="assets/capturas/a-calc1.png" alt="Calculadora química con la masa molar del agua" loading="lazy" />
+            </div>
+          </div>
+          <div class="phone-glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Funciones ============================== -->
+    <section class="section" id="funciones">
+      <div class="section-head reveal">
+        <span class="eyebrow">Funciones</span>
+        <h2>Todo lo que necesitas para<br />entender la materia.</h2>
+      </div>
+
+      <div class="bento">
+        <article class="card card-xl reveal">
+          <div class="card-text">
+            <span class="card-icon">⚛</span>
+            <h3>Cada átomo, por dentro</h3>
+            <p>Cuatro formas de ver un elemento: modelo de Bohr con sus capas, configuración electrónica con diagramas de cajas (Hund y Pauli), orbitales s, p, d y f en 3D y el núcleo con sus protones y neutrones.</p>
+          </div>
+          <img src="assets/capturas/m-orb.png" alt="Orbitales del carbono en 3D" loading="lazy" class="card-shot" />
+        </article>
+
+        <article class="card reveal">
+          <span class="card-icon">🧪</span>
+          <h3>Laboratorio 3D</h3>
+          <p>Coloca átomos, mide distancias y ángulos, y comprueba si una combinación forma un compuesto documentado. Los átomos nunca se unen “porque sí”.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-icon">🔗</span>
+          <h3>Enlaces explicados</h3>
+          <p>Para cada sustancia: enlace covalente, iónico, metálico o coordinado; simple, doble o triple; σ y π; polaridad por Δχ y fuerzas intermoleculares.</p>
+        </article>
+
+        <article class="card card-wide reveal">
+          <div class="card-text">
+            <span class="card-icon">🧮</span>
+            <h3>Calculadora química conectada al 3D</h3>
+            <p>Escribe una fórmula y obtén masa molar, composición porcentual y estados de oxidación. Ajusta ecuaciones con fracciones exactas, resuelve estequiometría con reactivo limitante, conversiones, disoluciones y fórmula empírica. Y con un toque, lleva el resultado al laboratorio.</p>
+          </div>
+          <div class="calc-demo" aria-label="Ejemplo de cálculo">
+            <div class="calc-line"><span class="muted">Fórmula</span><b>H₂O</b></div>
+            <div class="calc-line"><span class="muted">Masa molar</span><b>18.015 g/mol</b></div>
+            <div class="calc-bar"><span style="--w:88.81%">O · 88.81 %</span></div>
+            <div class="calc-bar h"><span style="--w:11.19%"></span><em>H · 11.19 %</em></div>
+            <div class="calc-eq">2 H₂ + O₂ → 2 H₂O <span class="ok">✓ ajustada</span></div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-icon">📚</span>
+          <h3>Biblioteca molecular</h3>
+          <p>Moléculas con geometría de PubChem y cristales como la sal (NaCl), el cobre o la calcita con datos experimentales de la Crystallography Open Database.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-icon">🎓</span>
+          <h3>Academia</h3>
+          <p>Lecciones cortas de estructura de la materia, átomo, isótopos, configuración y tabla periódica, con retos y enlaces directos a la vista 3D.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-icon">📱</span>
+          <h3>Hecha para el teléfono</h3>
+          <p>Gestos táctiles, modo oscuro, botón atrás de Android y funcionamiento sin conexión. Guarda y exporta tus experimentos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================== Galería ============================== -->
+    <section class="section section-tight">
+      <div class="gallery reveal" aria-label="Más pantallas de la app">
+        <figure><img src="assets/capturas/a-panel-sustancias-1.png" alt="Lista de sustancias del laboratorio" loading="lazy" /><figcaption>Sustancias en la mesa</figcaption></figure>
+        <figure><img src="assets/capturas/a-panel-sustancias-2.png" alt="Detalle del dióxido de carbono: enlace doble, molécula apolar" loading="lazy" /><figcaption>CO₂: enlaces polares, molécula apolar</figcaption></figure>
+        <figure><img src="assets/capturas/m-cristal.png" alt="Red cristalina de la calcita con datos experimentales" loading="lazy" /><figcaption>Calcita: red cristalina experimental</figcaption></figure>
+        <figure><img src="assets/capturas/m-nucleo.png" alt="Núcleo del hierro con 26 protones" loading="lazy" /><figcaption>Núcleo del hierro</figcaption></figure>
+        <figure><img src="assets/capturas/m-config.png" alt="Configuración electrónica del hierro con diagrama de cajas" loading="lazy" /><figcaption>Configuración electrónica</figcaption></figure>
+        <figure><img src="assets/capturas/m-mol.png" alt="Molécula de glucosa en 3D" loading="lazy" /><figcaption>Glucosa en 3D</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============================== Ciencia ============================== -->
+    <section class="section" id="ciencia">
+      <div class="science reveal">
+        <div class="science-text">
+          <span class="eyebrow">Ciencia honesta</span>
+          <h2>Ningún dato inventado.</h2>
+          <p>
+            Muchas apps de química dibujan moléculas bonitas pero imprecisas. Química 3D sigue una regla:
+            si un dato no tiene fuente, no se muestra como si fuera real.
+          </p>
+          <ul class="checks">
+            <li><b>Fuentes abiertas y citadas:</b> PubChem (NCBI/NLM) para elementos y moléculas; Crystallography Open Database para cristales.</li>
+            <li><b>Cada dato, etiquetado:</b> <span class="tag t-src">Fuente</span> <span class="tag t-calc">Calculado</span> <span class="tag t-pred">Predicción</span> <span class="tag t-aprox">Aproximación</span></li>
+            <li><b>Enlaces con criterio:</b> la app solo une átomos cuando la combinación coincide con una estructura documentada; si no, explica qué falta.</li>
+            <li><b>Enlace ≠ fuerza intermolecular:</b> se distinguen siempre, como en un buen libro de texto.</li>
+          </ul>
+        </div>
+        <figure class="science-fig">
+          <div class="science-visual" aria-hidden="true">
+            <div class="orbit o1"><i style="--a:0deg"></i><i style="--a:180deg"></i></div>
+            <div class="orbit o2"><i style="--a:0deg"></i><i style="--a:60deg"></i><i style="--a:120deg"></i><i style="--a:180deg"></i><i style="--a:240deg"></i><i style="--a:300deg"></i></div>
+            <div class="nucleus">O</div>
+          </div>
+          <figcaption>Oxígeno (Z = 8) en el modelo de Bohr: 2 electrones en la primera capa y 6 en la segunda.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================== Donaciones ============================== -->
+    <section class="section" id="donar">
+      <div class="section-head reveal">
+        <span class="eyebrow">Apoya el proyecto</span>
+        <h2>Ayúdanos a llegar<br /><span class="grad">a Google Play.</span></h2>
+        <p>
+          La app ya funciona en Android. Lo que falta para que cualquiera pueda descargarla es publicarla
+          y probarla a fondo. Tu donación va directamente a eso.
+        </p>
+      </div>
+
+      <div class="donate">
+        <div class="uses reveal">
+          <h3>¿En qué se usarán las donaciones?</h3>
+          <ol class="steps">
+            <li><span class="n">1</span><div><b>Cuenta de desarrollador de Google Play</b><p>El registro obligatorio para publicar apps en la tienda.</p></div></li>
+            <li><span class="n">2</span><div><b>Pruebas en teléfonos reales</b><p>Que funcione fluida en equipos de gama baja y alta, no solo en el emulador.</p></div></li>
+            <li><span class="n">3</span><div><b>Más contenido científico</b><p>Más moléculas, cristales y lecciones, siempre con fuente.</p></div></li>
+            <li><span class="n">4</span><div><b>Mantenimiento y mejoras</b><p>Correcciones, actualizaciones de Android y nuevas funciones.</p></div></li>
+          </ol>
+          <p class="small muted">Cualquier cantidad ayuda. Si no puedes donar, compartir esta página también suma muchísimo.</p>
+          <button class="btn btn-ghost" id="shareBtn" type="button">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/></svg>
+            Compartir esta página
+          </button>
+        </div>
+
+        <div class="qr-card reveal">
+          <div class="qr-head">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#ff5b7f" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+            <b>Dona con PayPal</b>
+          </div>
+          <img class="qr" src="assets/paypal-qr.png" alt="Código QR de PayPal para donar" width="540" height="651" />
+          <ol class="qr-steps">
+            <li>Abre la app de PayPal o la cámara de tu teléfono.</li>
+            <li>Escanea el código.</li>
+            <li>Elige la cantidad que quieras aportar. ¡Gracias!</li>
+          </ol>
+          <a class="btn btn-primary btn-block hidden" id="paypalLink" href="#" target="_blank" rel="noopener">Donar en PayPal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Preguntas ============================== -->
+    <section class="section" id="preguntas">
+      <div class="section-head reveal">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>Lo que quizá te preguntas.</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>¿Cuándo estará en Google Play?</summary>
+          <p>En cuanto se cubran la cuenta de desarrollador y las pruebas en dispositivos reales. Esta página anunciará el lanzamiento.</p>
+        </details>
+        <details>
+          <summary>¿Será gratuita?</summary>
+          <p>La meta es que cualquier estudiante pueda usarla. Por eso el proyecto se apoya en donaciones voluntarias y en fuentes de datos abiertas.</p>
+        </details>
+        <details>
+          <summary>¿Necesita internet?</summary>
+          <p>No. Los datos de los elementos y las moléculas van dentro de la app, así que funciona sin conexión.</p>
+        </details>
+        <details>
+          <summary>¿De dónde salen los datos?</summary>
+          <p>De PubChem (Biblioteca Nacional de Medicina de EE. UU.) para elementos y moléculas, y de la Crystallography Open Database para estructuras cristalinas. Cada dato indica si es de la fuente, calculado, una predicción o una aproximación.</p>
+        </details>
+        <details>
+          <summary>¿Y en iPhone?</summary>
+          <p>El primer objetivo es Android. La app está construida con tecnologías web y Capacitor, así que una versión para iOS es posible más adelante.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================== Cierre ============================== -->
+    <section class="final reveal">
+      <h2>Haz que la química<br />se vea como nunca.</h2>
+      <a class="btn btn-primary btn-lg" href="#donar">Quiero apoyar</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand"><img src="assets/icono.svg" alt="" width="28" height="28" /><span>Química 3D</span></div>
+    <p class="small muted">Datos de elementos y moléculas: PubChem (NCBI/NLM). Estructuras cristalinas: Crystallography Open Database. Las capturas son de la app real en desarrollo.</p>
+    <p class="small muted">© <span id="year"></span> Química 3D.</p>
+  </footer>
+
+  <script src="assets/moleculas.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
